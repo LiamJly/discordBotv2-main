@@ -40,6 +40,6 @@ export class ShutdownCommand extends Command {
       } catch(error) {
         console.error('ERROR:', error);
       }
-      await message.channel.send(`requête de shutdown envoyée, vérifier logs.`);
+      await message.channel.send(`requête de shutdown envoyée, vérifier logs dans la console.`);
     }
 }
