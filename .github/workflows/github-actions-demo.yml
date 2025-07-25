@@ -20,6 +20,7 @@ jobs:
         run: |
           npm i
       - name: Start bot
-        run:
-            node ./
-    
+        run: node src/index.mjs
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+      - run: echo "🚀 The bot has been started successfully!"
