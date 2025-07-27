@@ -30,4 +30,4 @@ jobs:
             echo "===> Install dependencies"
             npm install --only=prod
             echo "===> Restart bot"
-            pm2 restart bot-discord || pm2 start index.js --name bot-discord
+            /usr/local/bin/pm2 restart bot-discord || /usr/local/bin/pm2 start index.js --name bot-discord
