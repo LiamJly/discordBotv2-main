@@ -1,0 +1,32 @@
+name: Deploy to NAS
+
+on:
+  push:
+    branches:
+      - main   # déploie seulement quand tu push sur main (ou master)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : récupérer le code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Étape 2 : se connecter en SSH et mettre à jour le bot
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.NAS_HOST }}
+          username: ${{ secrets.NAS_USER }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: ${{ secrets.NAS_PORT }}
+          script: |
+            cd /volume1/docker/discordBot
+            echo "===> Pull last version"
+            git pull
+            echo "===> Install dependencies"
+            npm install --only=prod
+            echo "===> Restart bot"
+            pm2 restart bot-discord || pm2 start index.js --name bot-discord
