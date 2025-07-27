@@ -24,7 +24,7 @@ jobs:
           port: ${{ secrets.NAS_PORT }}
           script: |
             cd /volume1/docker/discordBot
-            export PATH=$PATH:/volume1/@appstore/Node.js_v20/usr/local/bin
+            export PATH=$PATH:/usr/local/bin/
             echo "===> Pull last version"
             git pull
             echo "===> Install dependencies"
