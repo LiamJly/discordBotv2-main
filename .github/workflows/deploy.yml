@@ -3,7 +3,7 @@ name: Deploy to NAS
 on:
   push:
     branches:
-      - main   # déploie seulement quand tu push sur main (ou master)
+      - main   # déploiement seulement lors d'un push sur main (ou master)
 
 jobs:
   deploy:
